@@ -6,11 +6,13 @@ import 'package:space_app/core/utils/app_text_styles.dart';
 class CustomMoonHeader extends StatelessWidget {
   final String title;
   final String subTitle;
+  final bool isDetailsScreen;
 
   const CustomMoonHeader({
     super.key,
     required this.title,
     required this.subTitle,
+    this.isDetailsScreen = false,
   });
 
   @override
@@ -48,6 +50,23 @@ class CustomMoonHeader extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+          ),
+        ),
+        Visibility(
+          visible: isDetailsScreen,
+          child: SafeArea(
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: IconButton.styleFrom(
+                backgroundColor: AppColors.red,
+                foregroundColor: AppColors.white,
+                shape: const CircleBorder(),
+                iconSize: 28,
+              ),
+              icon: const Icon(Icons.arrow_back),
             ),
           ),
         ),
